@@ -18,7 +18,7 @@ The project is split into the webserver (index.js), the email abstraction, the e
 
 Ideally, these could be further split up into publisher/subscriber microservices to better handle scaling demand.
 
-Only email.js has unit tests as this was easiest due to them not interfacing directly externally. These have been written nominally and not-exhaustively just to prove I know how to do it. System tests could be written to exercise the whole code.
+Only email.js and the helper file have unit tests as these were easiest due to them not interfacing directly with any external resources. These have been written nominally and not-exhaustively just to prove I know how to do it. System tests could be written to exercise the whole code.
 
 ### Client choosing algorithm
 The client to service the email request is chosen at random. The Mailgun client never works as I don't have a domain that I can register to it (the sandbox it provides you needs a whitelist, and if I could foresee what email you were going to use I probably wouldn't use my clairvoyance for Software Engineering!), which means you will experience failover about 50% of the time. This does mean that in the bad case, users will experience some delay half the time as the server attempts both clients before sending the email. This is better than say using a Primary-Secondary HA solution which might cause users lagging 100% of the time.
