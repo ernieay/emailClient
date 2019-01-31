@@ -7,7 +7,7 @@ const sendgridurl = 'https://api.sendgrid.com/v3/mail/send';
 const TO_INDEX = 0;
 
 function reverse(string){
-    const splitString = str.split(""); 
+    const splitString = string.split(""); 
     const reverseArray = splitString.reverse(); 
     return reverseArray.join("");
 }
