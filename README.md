@@ -27,3 +27,8 @@ The client to service the email request is chosen at random. The Mailgun client 
 Some attempt has been made to handle validation, but some (for example maximum email list size, message validation, etc) has been left out due to time constraints. These can either be handled during the input validation sections, or else the errors from the clients could be bubbled up to the user and handled within the client files (I've left a comment where this would be appropriate). 
 
 Errors are otherwise abstracted from the user - eg if both clients fail for whatever reason, at the moment the user is just told that no clients are available.
+
+### Credentials in source
+Due to simplicity I stored credentials in source code, but in an actual production environment these would be stored on the server itself and would be DevOps' responsibility to store, set and rotate these keys.
+
+UPDATE: Sendgrid is really clever and actually scans github for its keys. Now my Sendgrid account it locked out...
