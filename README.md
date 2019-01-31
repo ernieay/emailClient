@@ -36,3 +36,4 @@ Due to simplicity I stored credentials in source code, but in an actual producti
 
 UPDATE: Sendgrid is really clever and actually scans github for its keys. Now my Sendgrid account it locked out...
 UPDATEx2: Trying to one-up them by creating a new account and reversing the key so they'll let me submit this assignment
+UPDATEx3: Okay they have something called "GitGuardian" which is smarter than that...:(
