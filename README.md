@@ -10,6 +10,9 @@ We achieve this by creating a webserver that will take POST requests in x-www-fo
 2. `npm run start` to start the webserver, then send POST messages to localhost:3000/email
 3. `npm run test` to kick off unit tests.
 
+## The cloud app
+Send POST requests to `https://stormy-shelf-84187.herokuapp.com/email` with the body containing x-www-form-urlencoded data with "to", "from", "subject" and "message" fields ("cc" and "bcc" are optional). If successful, should return 200 with a message echoing the subject back.
+
 ## Discussion
 The code is littered with comments outlining the design choices made. I've (hopefully) compiled them all here for your easy perusal.
 
