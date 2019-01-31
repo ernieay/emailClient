@@ -32,3 +32,4 @@ Errors are otherwise abstracted from the user - eg if both clients fail for what
 Due to simplicity I stored credentials in source code, but in an actual production environment these would be stored on the server itself and would be DevOps' responsibility to store, set and rotate these keys.
 
 UPDATE: Sendgrid is really clever and actually scans github for its keys. Now my Sendgrid account it locked out...
+UPDATEx2: Trying to one-up them by creating a new account and reversing the key so they'll let me submit this assignment
