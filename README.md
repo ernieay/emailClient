@@ -7,7 +7,7 @@ We achieve this by creating a webserver that will take POST requests in x-www-fo
 
 ## Running the solution
 1. Download the source and run `npm install` to get all the packages
-2. `npm run start` to start the webserver, then send POST messages to localhost:3000
+2. `npm run start` to start the webserver, then send POST messages to localhost:3000/email
 3. `npm run test` to kick off unit tests.
 
 ## Discussion
