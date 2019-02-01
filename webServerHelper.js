@@ -43,5 +43,10 @@ function requiredFieldsPresent(input) {
     return true;
 }
 
+function turnToArray(argument){
+    return Array.isArray(argument) ? argument : [argument];
+}
+
 module.exports.emailsOkay = emailsOkay;
 module.exports.requiredFieldsPresent = requiredFieldsPresent;
+module.exports.turnToArray = turnToArray;

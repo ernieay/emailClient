@@ -34,6 +34,8 @@ Some attempt has been made to handle validation, but some (for example maximum e
 
 Server (500) errors are otherwise abstracted from the user - eg if both clients fail for whatever reason, at the moment the user is just told that no clients are available.
 
+Errors are logged to file using a logging framework.
+
 ### Credentials
 API keys are retrieved via environment variables which are set in the "production" deployment environment.
 

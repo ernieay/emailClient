@@ -27,14 +27,14 @@ app.post('/email', (req, res) => {
         message: req.body.message
     }
 
-    emailProperties.to = Array.isArray(req.body.to) ? req.body.to : [req.body.to];
+    emailProperties.to = helper.turnToArray(req.body.to);
 
     if (req.body.cc) {
-        emailProperties.cc = Array.isArray(req.body.cc) ? req.body.cc : [req.body.cc];
+        emailProperties.cc = helper.turnToArray(req.body.cc);
     }
 
     if (req.body.bcc) {
-        emailProperties.bcc = Array.isArray(req.body.bcc) ? req.body.bcc : [req.body.bcc];
+        emailProperties.bcc = helper.turnToArray(req.body.bcc);
     }
 
     if (!helper.emailsOkay(emailProperties)) {
