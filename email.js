@@ -22,6 +22,7 @@ function sendEmail(emailProperties, start, count) {
     if (start === undefined && !count) {
         // chooses a random client to attempt first
         const thisStart = Math.floor(Math.random() * emailClients.length);
+        
         return emailClients[thisStart].sendEmail(emailProperties)
             // if the first client doesn't work, send it down the rabbit hole
             .catch(err => sendEmail(emailProperties, thisStart, 1));

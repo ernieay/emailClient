@@ -5,13 +5,7 @@ const logger = require('./logger');
 const sendgridkey = process.env.SENDGRID;
 const sendgridurl = 'https://api.sendgrid.com/v3/mail/send';
 
-const TO_INDEX = 0;
-
-function reverse(string) {
-    const splitString = string.split("");
-    const reverseArray = splitString.reverse();
-    return reverseArray.join("");
-}
+const PERS_INDEX = 0;
 
 function createEmailArray(emails) {
     const tempArray = [];
@@ -29,14 +23,14 @@ function sendEmail(emailProperties) {
         "content": [{ "type": "text/plain", "value": emailProperties.message }]
     };
 
-    body.personalizations[TO_INDEX].to = createEmailArray(emailProperties.to);
+    body.personalizations[PERS_INDEX].to = createEmailArray(emailProperties.to);
 
     if (emailProperties.cc && emailProperties.cc.length > 0) {
-        body.personalizations[TO_INDEX].cc = createEmailArray(emailProperties.cc);
+        body.personalizations[PERS_INDEX].cc = createEmailArray(emailProperties.cc);
     }
 
     if (emailProperties.bcc && emailProperties.bcc.length > 0) {
-        body.personalizations[TO_INDEX].bcc = createEmailArray(emailProperties.bcc);
+        body.personalizations[PERS_INDEX].bcc = createEmailArray(emailProperties.bcc);
     }
 
     const options = {
