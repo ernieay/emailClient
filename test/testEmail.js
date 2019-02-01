@@ -8,14 +8,14 @@ describe('Email', function () {
 
     it('should reject if too many tries', function (done) {
         email.sendEmail({}, 1, 1000)
-        .then(() => {
-            should.fail();
-            done();
-        })
-        .catch(err => {
-            err.should.equal(err, "No clients available");
-            done();
-        })
+            .then(() => {
+                should.fail();
+                done();
+            })
+            .catch(err => {
+                err.should.equal(err, "No clients available");
+                done();
+            })
     });
 
     it('should send email again if first one failed', function (done) {
@@ -26,14 +26,14 @@ describe('Email', function () {
         stub2.returns(Promise.resolve("Success"));
 
         email.sendEmail({}, 0, 1)
-        .then((success) => {
-            success.should.equal("Success");
-            done();
-        })
-        .catch(err => {
-            should.fail();
-            done();
-        })
+            .then((success) => {
+                success.should.equal("Success");
+                done();
+            })
+            .catch(err => {
+                should.fail();
+                done();
+            })
     });
 
 

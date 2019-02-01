@@ -1,5 +1,6 @@
 const express = require('express');
 const bodyParser = require('body-parser');
+const logger = require('./logger');
 const app = express();
 const port = process.env.PORT ? process.env.PORT : 3000;
 
@@ -13,6 +14,7 @@ app.post('/email', (req, res) => {
 
     if (!helper.requiredFieldsPresent(req.body)) {
         res.status(400).send("TO, FROM, SUBJECT and MESSAGE are mandatory fields");
+        logger.log(req, 'error');
         return;
     }
 
@@ -37,14 +39,19 @@ app.post('/email', (req, res) => {
 
     if (!helper.emailsOkay(emailProperties)) {
         res.status(400).send("One of your emails isn't an email");
+        logger.log(req, 'error');
         return;
     }
 
     email.sendEmail(emailProperties)
         .then(() => {
             res.send(`"${req.body.subject}" email sent!`);
+            logger.log(req, 'info');
         })
-        .catch(err => res.status(500).send(err.toString()));
+        .catch(err => {
+            logger.log(req, 'error');
+            res.status(500).send(err.toString())
+        });
 });
 
 app.listen(port, () => console.log(`Email app listening on port ${port}!`));

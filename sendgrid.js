@@ -1,13 +1,15 @@
 const rp = require('request-promise-native');
 
+const logger = require('./logger');
+
 const sendgridkey = process.env.SENDGRID;
 const sendgridurl = 'https://api.sendgrid.com/v3/mail/send';
 
 const TO_INDEX = 0;
 
-function reverse(string){
-    const splitString = string.split(""); 
-    const reverseArray = splitString.reverse(); 
+function reverse(string) {
+    const splitString = string.split("");
+    const reverseArray = splitString.reverse();
     return reverseArray.join("");
 }
 
@@ -36,7 +38,7 @@ function sendEmail(emailProperties) {
     if (emailProperties.bcc && emailProperties.bcc.length > 0) {
         body.personalizations[TO_INDEX].bcc = createEmailArray(emailProperties.bcc);
     }
-    
+
     const options = {
         method: 'POST',
         uri: sendgridurl,
@@ -49,7 +51,7 @@ function sendEmail(emailProperties) {
     }
     return rp(options)
         .catch(err => {
-            console.log(err);
+            logger.log(err, 'error');
             Promise.reject(err)
         }); //can handle different error codes here if you like
 }

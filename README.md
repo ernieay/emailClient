@@ -18,11 +18,11 @@ Send POST requests to `https://stormy-shelf-84187.herokuapp.com/email` with the 
 The code is littered with comments outlining the design choices made. I've (hopefully) compiled them all here for your easy perusal.
 
 ### File Breakdown and Architecture
-The project is split into the webserver (index.js), the email abstraction, the email clients and the helper functions. The email abstraction layer was introduced to demonstrate testability, but also splits out the client-choosing logic away from the webserver, which is responsible chiefly with requests and responses. Each client has its own file, and the email abstraction is designed in such a way that new clients can be easily added.
+The project is split into the webserver (index.js), the email abstraction, the email clients and the helper files. The email abstraction layer was introduced to demonstrate testability, but also splits out the client-choosing logic away from the webserver, which is responsible chiefly with requests and responses. Each client has its own file, and the email abstraction is designed in such a way that new clients can be easily added.
 
 Additionally, these could be further split up into publisher/subscriber microservices to better handle scaling demand.
 
-Only email.js and the helper file have unit tests as these were easiest due to them not interfacing directly with any external resources. These have been written nominally and not-exhaustively just to prove I know how to do it. System tests could be written to exercise the whole code.
+Only email.js and the webserverhelper file have unit tests as these were easiest due to them not interfacing directly with any external resources. These have been written nominally and not-exhaustively just to prove I know how to do it. System tests could be written to exercise the whole code.
 
 Ideally, I would have made this project completely serverless; deployed via AWS lambdas with AWS api gateway in front. A serverless architecture would be much more scalable and easier to deploy/maintain. However, after clarifying the spec I was told the task was to create a web server in Node and that deployment was secondary.
 
@@ -36,3 +36,6 @@ Server (500) errors are otherwise abstracted from the user - eg if both clients 
 
 ### Credentials
 API keys are retrieved via environment variables which are set in the "production" deployment environment.
+
+### ES6
+My version of node (I run 10.15.1) at home doesn't support Import and Export statements. I've otherwise tried to adhere to ES6 as much as I can.

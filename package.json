@@ -14,7 +14,8 @@
     "request": "^2.88.0",
     "request-promise-native": "^1.0.5",
     "body-parser": "^1.18.3",
-    "sinon": "^7.2.3"
+    "sinon": "^7.2.3",
+    "winston": "^3.2.1"
   },
   "engines": {
     "node": "8.x"
