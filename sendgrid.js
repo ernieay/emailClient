@@ -1,7 +1,6 @@
 const rp = require('request-promise-native');
 
-// this is equally as bad (see mailgun.js comments)
-const sendgridkey = 'IVWq9Xzx5HM5NoU-NIQX3bj-Zge9l424Iy6zsa-FZHg.w0Y64C55iiQGUS9T6yBbHF.GS';
+const sendgridkey = process.env.SENDGRID;
 const sendgridurl = 'https://api.sendgrid.com/v3/mail/send';
 
 const TO_INDEX = 0;
@@ -45,11 +44,14 @@ function sendEmail(emailProperties) {
         json: true,
         headers: {
             'Content-Type': 'application/json',
-            'Authorization': `Bearer ${reverse(sendgridkey)}`
+            'Authorization': `Bearer ${sendgridkey}`
         }
     }
     return rp(options)
-        .catch(err => Promise.reject(err)); //can handle different error codes here if you like
+        .catch(err => {
+            console.log(err);
+            Promise.reject(err)
+        }); //can handle different error codes here if you like
 }
 
 module.exports.sendEmail = sendEmail;
